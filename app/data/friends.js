@@ -1,4 +1,4 @@
-var friendsObject = [
+var friendsArray = [
     {
         "name":"Rachel Green",
         "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
@@ -135,5 +135,8 @@ var friendsObject = [
             1
           ]
     }
-]
+];
+
+//Makes the array accessible to other files
+module.exports = friendsArray; 
 
