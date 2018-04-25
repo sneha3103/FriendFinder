@@ -17,8 +17,19 @@ app.get("/api/friends", function(req, res) {
 
 //send data to server
 //save friends data in a variable
+//Post is used to handle all the incoming survey results.
 app.post("/api/friends", function(req, res) {
-    req.body;
+
+    var buddyMatch;
+    var newPersonScore = req.body.scores;
+    console.log(req.body);
+    console.log(req.body.scores);
+    var results = [];
+    var resultIsMatched = 0;
+   
+
+
+
     //comparison
     //respond with match - res.json object (similar to friends array) to send the match 
   });
