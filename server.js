@@ -3,9 +3,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
 
-//friends.js is data so we want to save to a variable
-var friendsData = require("./app/data/friends.js")
-console.log(friendsData);
+
 
 //Setting up the Express Path
 var app = express();
@@ -19,8 +17,6 @@ app.use(bodyParser.json());
 require("./app/routing/htmlRoutes.js")(app);
 
 require("./app/routing/apiRoutes.js")(app);
-
-
 
 
 
