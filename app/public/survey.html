@@ -17,6 +17,9 @@
     <!-- CSS Links -->
     <!-- <link rel="stylesheet" type="text/css" href="./app/style.css"> -->
 
+    <!-- jQuery Link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -264,7 +267,7 @@
             function checkForm() {
                 var formIsComplete = true;
 
-                $(".form-control").eachf(function () {
+                $(".form-control").each(function () {
                     if ($(this).val() === "") {
                         formIsComplete === false;
                     }
@@ -274,7 +277,7 @@
             }
 
 
-            if (formIsComplete() === true) {
+            if (checkForm() === true) {
             // Here we grab the form elements
             var newFriend = {
                 name: $("#nameInput").val().trim(),
@@ -295,6 +298,6 @@
 
         }
     });
-    
+
     </script>
 
