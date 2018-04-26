@@ -35,19 +35,21 @@ app.post("/api/friends", function(req, res) {
 
     //Loop through the friendsData array and compare scores
     for (var i = 0; i < friendsData.length; i++) {
+        var currentFriend = friendsData[i];
         //created a variable called diff to compute the differences for each question
         var diff = 0;
         for (var j = 0; j < userResponses.length; j++) {
+            var bestFriend = userResponses[j];
             //Math.abs takes care of the absolute value of the integer so each negative value will be positive
-            diff += Math.abs(friendsData[i].scores[j] - userResponses[j]);
-        }
+            diff += Math.abs(parseInt(friendsData[i].scores[j]) - parseInt(userResponses[j]));
+        
         
         //If there the lowest difference, record the friends match 
 
         if(diff < totalDiff) {
             totalDiff = diff;
-            matchImage = friendsData[i].photo;
-            matchName = friendsData[i].name;
+            bestFriend = currentFriend.photo;
+            bestFriend = currentFriend.name;
         }
     }
 
@@ -57,6 +59,7 @@ app.post("/api/friends", function(req, res) {
 
     //comparison
     //respond with match - res.json object (similar to friends array) to send the match 
+    res.json
   });
 
 }
