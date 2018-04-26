@@ -170,18 +170,6 @@
             </div>
         </footer>
 
-        <!-- MODAL
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-        Click Here
-</button>
-
-<div id="simpleModal" class="modal">
-    <div class="modal-content">
-       <span class="closeBtn">&times;</span>
-       <p>Hello! This is a modal</p>
-    </div>
-</div> -->
-
         <!-- Modal -->
         <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -191,40 +179,43 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h4 class="modal-title" id="myModalLabel">Meet your match! They will surely be there for you!</h4>
+                        <h4 class="modal-title" id="myModalLabel">Meet your Friend-Mate! They will surely be there for you!</h4>
                     </div>
                     <div class="modal-body" id="friendName">
                     </div>
-                    <img id="friendPic" src="" alt="Image Unavailable" width=3 00px>
+                    <img id="friendPic" src="" alt="Image Unavailable" width= "300px">
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                     </div>
                 </div>
             </div>
         </div>
 
-
-
-
     </div>
-    <!-- <script type="text/javascript">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
 
         $("#submit").on("click", function (event) {
             event.preventDefault();
 
+            $("#userModal").modal("show");
+
+
             function checkForm() {
                 var formIsComplete = true;
 
-                $(".form-control").eachf(function () {
+                $(".form-control").each(function () {
                     if ($(this).val() === "") {
                         formIsComplete === false;
                     }
                 });
 
                 return formIsComplete;
-            }
-
+                console.log(formIsComplete);
+            
 
             if (formIsComplete() === true) {
             // Here we grab the form elements
@@ -245,59 +236,37 @@
                 ]
             };
 
+            console.log (newFriend);
+
+
+            // Here we get the location of the root page.
+            // We use this instead of explicitly saying the URL is localhost:8080 because the url will change when we deploy.
+            var currentURL = window.location.origin;
+
+            // This method is similar to an ajax call where we pass the current url, the object, and the callback function. The callback function is the response of the server
+            $.post(currentURL + "/api/friends", newFriend,
+                function (data) {
+                    console.log(data.photo);
+                    $("#friendName").text(data.name);
+                    $("#friendPic").attr("src", data.photo);
+                    console.log($("#friendPic").attr("src", data.photo));
+                });
+
+
+               
+
         }
+
+     
+
+        }
+ 
     });
 
-    
-    
-
-
-
-
-    </script> -->
+</script>
 </body>
 
 </html>
 
- <script type="text/javascript">
 
-        $("#submit").on("click", function (event) {
-            event.preventDefault();
-
-            function checkForm() {
-                var formIsComplete = true;
-
-                $(".form-control").each(function () {
-                    if ($(this).val() === "") {
-                        formIsComplete === false;
-                    }
-                });
-
-                return formIsComplete;
-            }
-
-
-            if (checkForm() === true) {
-            // Here we grab the form elements
-            var newFriend = {
-                name: $("#nameInput").val().trim(),
-                photo: $("#photoInput").val().trim(),
-                scores: [
-                    $("#q1").val(),
-                    $("#q2").val(),
-                    $("#q3").val(),
-                    $("#q4").val(),
-                    $("#q5").val(),
-                    $("#q6").val(),
-                    $("#q7").val(),
-                    $("#q8").val(),
-                    $("#q9").val(),
-                    $("#q10").val()
-                ]
-            };
-
-        }
-    });
-
-    </script>
 

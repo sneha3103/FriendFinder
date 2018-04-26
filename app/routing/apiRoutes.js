@@ -43,7 +43,7 @@ app.post("/api/friends", function(req, res) {
         }
         
         //If there the lowest difference, record the friends match 
-        
+
         if(diff < totalDiff) {
             totalDiff = diff;
             matchImage = friendsData[i].photo;
@@ -53,19 +53,6 @@ app.post("/api/friends", function(req, res) {
 
     //Adds a new user
     friendsData.push[userInput];
-
-
-    // friendsData.push(req.body);
-    // console.log(req.body);
-
-    // var buddyMatch;
-    // var newPersonScore = req.body.scores;
-    // console.log(req.body);
-    // console.log(req.body.scores);
-    // var results = [];
-    // var resultIsMatched = 0;
-   
-
 
 
     //comparison
