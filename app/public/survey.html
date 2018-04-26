@@ -203,21 +203,23 @@
 
             $("#userModal").modal("show");
 
+            // checkForm();
 
-            function checkForm() {
-                var formIsComplete = true;
 
-                $(".form-control").each(function () {
-                    if ($(this).val() === "") {
-                        formIsComplete === false;
-                    }
-                });
+            // function checkForm() {
+            //     var formIsComplete = true;
 
-                return formIsComplete;
-                console.log(formIsComplete);
+            //     $(".form-control").each(function () {
+            //         if ($(this).val() === "") {
+            //             formIsComplete === false;
+            //         }
+            //     });
+
+            //     return formIsComplete;
+            //     console.log(formIsComplete);
             
 
-            if (formIsComplete() === true) {
+            // if (formIsComplete() === true) {
             // Here we grab the form elements
             var newFriend = {
                 name: $("#nameInput").val().trim(),
@@ -246,22 +248,17 @@
             // This method is similar to an ajax call where we pass the current url, the object, and the callback function. The callback function is the response of the server
             $.post(currentURL + "/api/friends", newFriend,
                 function (data) {
+                    console.log(data);
                     console.log(data.photo);
                     $("#friendName").text(data.name);
                     $("#friendPic").attr("src", data.photo);
                     console.log($("#friendPic").attr("src", data.photo));
                 });
-
-
                
 
-        }
+        });
 
-     
 
-        }
- 
-    });
 
 </script>
 </body>
