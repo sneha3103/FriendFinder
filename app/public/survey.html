@@ -203,23 +203,6 @@
 
             $("#userModal").modal("show");
 
-            // checkForm();
-
-
-            // function checkForm() {
-            //     var formIsComplete = true;
-
-            //     $(".form-control").each(function () {
-            //         if ($(this).val() === "") {
-            //             formIsComplete === false;
-            //         }
-            //     });
-
-            //     return formIsComplete;
-            //     console.log(formIsComplete);
-            
-
-            // if (formIsComplete() === true) {
             // Here we grab the form elements
             var newFriend = {
                 name: $("#nameInput").val().trim(),
@@ -254,12 +237,7 @@
                     $("#friendPic").attr("src", data.photo);
                     console.log($("#friendPic").attr("src", data.photo));
                 });
-               
-
         });
-
-
-
 </script>
 </body>
 

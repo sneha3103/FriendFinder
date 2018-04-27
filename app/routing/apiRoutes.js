@@ -28,38 +28,42 @@ app.post("/api/friends", function(req, res) {
     console.log("user responses = " + userResponses);
 
     //To find your friend mate
-
-    var matchImage = "";
-    var matchName = "";
-    var totalDiff = 1000;
+    var bestFriendMatch;
+    var match = 0;
+    var results = [];
 
     //Loop through the friendsData array and compare scores
     for (var i = 0; i < friendsData.length; i++) {
-        var currentFriend = friendsData[i];
         //created a variable called diff to compute the differences for each question
         var diff = 0;
+
         for (var j = 0; j < userResponses.length; j++) {
-            var bestFriend = userResponses[j];
             //Math.abs takes care of the absolute value of the integer so each negative value will be positive
             diff += Math.abs(parseInt(friendsData[i].scores[j]) - parseInt(userResponses[j]));
-        
-        
-        //If there the lowest difference, record the friends match 
-
-        if(diff < totalDiff) {
-            totalDiff = diff;
-            bestFriend = currentFriend.photo;
-            bestFriend = currentFriend.name;
-        }
+        };
+        //Pushes the difference to the results array
+        results.push(diff);
     }
+    //Loops through the results array and compares if the difference is less than or equal to the first result index. 
+    for(var i =0; i<results.length; i++) {
+        console.log(results[i]);
+        
+        //If the difference is less or equal, match gets reassigned and compared again until loop is complete
+        if(results[i] <= results[match]) {
+            match = i;
+            console.log(match);
+        }
+    };
+
+    //Assigned a new variable that has the new best friend match
+    bestFriendMatch = friendsData[match];
 
     //Adds a new user
     friendsData.push[userInput];
 
-
     //comparison
     //respond with match - res.json object (similar to friends array) to send the match 
-    res.json
+    res.json(bestFriendMatch);
   });
 
 }
